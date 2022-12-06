@@ -1,16 +1,30 @@
 import {BrowserRouter as Router} from "react-router-dom";
 
-import HelloWorld from "./components/HelloWorld";
-import PrintName from "./components/State/PrintName";
 import Form from "./components/State/Form";
+import {Component} from "react";
+import Profile from "./components/State/Profile";
 
-export default function App() {
-    return (
-        <Router>
-            <HelloWorld weight={12} animal="tests"/>
-            <PrintName/>
-            <Form email={"test"}/>
-        </Router>
-    );
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {email: 'Anonym'}
+        this.handleEmail = this.updateEmail.bind(this)
+    }
+
+    updateEmail(email){
+        this.setState({email: email})
+    }
+
+   render() {
+       return (
+           <Router>
+               <Form
+                   email={this.state.email}
+                   handleEmail={this.handleEmail}
+               />
+               <Profile email={this.state.email}/>
+           </Router>
+       );
+   }
 }
 

@@ -63,6 +63,7 @@ export default class Form extends Component {
                 Email: ${this.state.email},
                 Mot de passe: ${this.state.password}
             `)
+            this.props.handleEmail(this.state.email)
         }
     }
 
