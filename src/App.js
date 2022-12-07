@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {RouterProvider, createBrowserRouter} from "react-router-dom";
 
 import Form from "./components/State/Form";
 import {Component} from "react";
@@ -18,15 +18,21 @@ export default class App extends Component {
     }
 
     render() {
+        const router = createBrowserRouter([
+            {
+                path: "/",
+                element: <Form email={this.state.email} handleEmail={this.handleEmail}/>,
+            },
+            {
+                path: '/sub-page',
+                element: <SubPage/>
+            }
+        ]);
         return (
-            <Router>
-                <Header/>
-                <Routes>
-                    <Route path={"/"} element={(<Form email={this.state.email} handleEmail={this.handleEmail}/>)}/>
-                    <Route path={'/sub-page'} element={(<SubPage/>)}/>
-                </Routes>
+            <div>
+                <RouterProvider router={router}/>
                 <Profile email={this.state.email}/>
-            </Router>
+            </div>
         );
     }
 }
