@@ -16,4 +16,7 @@ const mapStateToProps = state => {
     return { user };
 };
 
-export default connect(mapStateToProps)(Profile);
+export default connect(
+    mapStateToProps,
+    null
+)(Profile);
