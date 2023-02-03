@@ -1,6 +1,7 @@
 import React from "react";
 import {useLocation} from "react-router-dom";
 import '../assets/styles.css'
+import helloUser from "../services/helloUser";
 
 function useQuery() {
     const {search} = useLocation();
@@ -13,11 +14,10 @@ function showAlert(animal){
 }
 
 export default function HelloWorld() {
-    let name = useQuery().get('name') ?? 'Anonym';
     let animals = ['cat', 'dog', 'monkey', 'cow'];
 
     return (<div className="red-text">
-        Hello World, I'm {name}
+        {helloUser(useQuery().get('name'))}
 
         <button onClick={(e) => {console.log(e)}}>click</button>
 
