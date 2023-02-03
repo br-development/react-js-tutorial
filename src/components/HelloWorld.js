@@ -16,7 +16,7 @@ function showAlert(animal){
 export default function HelloWorld() {
     let animals = ['cat', 'dog', 'monkey', 'cow'];
 
-    return (<div className="red-text">
+    return (<div className="red-text" data-testid="container">
         {helloUser(useQuery().get('name'))}
 
         <button onClick={(e) => {console.log(e)}}>click</button>
